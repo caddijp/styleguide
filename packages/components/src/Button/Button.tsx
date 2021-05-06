@@ -1,4 +1,17 @@
 import LoadingOutlined from '@ant-design/icons/LoadingOutlined';
+import {
+  $bgBlue,
+  $bgGray,
+  $bgRed,
+  $blue2,
+  $borderBlue,
+  $borderGray2,
+  $borderGrayLight2,
+  $borderRed,
+  $gray,
+  $red,
+  $white,
+} from '@caddijp/colors';
 import React, { ComponentProps, FC } from 'react';
 import styled from 'styled-components';
 
@@ -18,7 +31,7 @@ const BaseWrapper = styled.button<{ disabled?: boolean; isLoading?: boolean }>`
   padding: 4px 16px;
   text-align: center;
   cursor: pointer;
-  background: #fff;
+  background: ${$white};
   border: 0;
   border-radius: 2px;
   opacity: ${(props) => (props.disabled || props.isLoading ? '.5' : '1')};
@@ -42,27 +55,28 @@ const PrimaryButton = styled(BaseButton)<{
   filled?: boolean;
   bordered?: boolean;
 }>`
-  color: ${({ filled, bordered }) => (filled || !bordered ? '#fff' : '#1890ff')};
-  background: ${({ filled, bordered }) => (filled || !bordered ? '#1890ff' : '#fff')};
-  border: 1px solid ${({ filled, bordered }) => (filled || !bordered ? '#1890ff' : '#fff')};
+  color: ${({ filled, bordered }) => (filled || !bordered ? $white : $blue2)};
+  background: ${({ filled, bordered }) => (filled || !bordered ? $bgBlue : $white)};
+  border: 1px solid ${({ filled, bordered }) => (filled || !bordered ? $borderBlue : $white)};
 `;
 
 const DangerButton = styled(BaseButton)<{
   filled?: boolean;
   bordered?: boolean;
 }>`
-  color: ${({ filled, bordered }) => (filled || !bordered ? '#fff' : '#eb5757')};
-  background: ${({ filled, bordered }) => (filled || !bordered ? '#eb5757' : '#fff')};
-  border: 1px solid ${({ filled, bordered }) => (filled || !bordered ? '#eb5757' : '#fff')};
+  color: ${({ filled, bordered }) => (filled || !bordered ? $white : $red)};
+  background: ${({ filled, bordered }) => (filled || !bordered ? $bgRed : $white)};
+  border: 1px solid ${({ filled, bordered }) => (filled || !bordered ? $borderRed : $white)};
 `;
 
 const DefaultButton = styled(BaseButton)<{
   filled?: boolean;
   bordered?: boolean;
 }>`
-  color: ${({ filled, bordered }) => (filled || !bordered ? '#fff' : '#595959')};
-  background: ${({ filled, bordered }) => (filled || !bordered ? '#595959' : '#fff')};
-  border: 1px solid ${({ filled, bordered }) => (filled || !bordered ? '#595959' : '#d9d9d9')};
+  color: ${({ filled, bordered }) => (filled || !bordered ? $white : $gray)};
+  background: ${({ filled, bordered }) => (filled || !bordered ? $bgGray : $white)};
+  border: 1px solid
+    ${({ filled, bordered }) => (filled || !bordered ? $borderGray2 : $borderGrayLight2)};
 `;
 
 interface TextButtonProps extends BaseProps {
@@ -80,7 +94,7 @@ const StyledTextButton = styled.button<{
   align-items: center;
   font-size: ${(props) => props.fontSize ?? '11px'};
   font-weight: bold;
-  color: #3582e5;
+  color: ${$blue2};
   text-decoration: ${(props) => (props.needsBorderLine ? 'underline' : 'none')};
   cursor: pointer;
   background: none;
